@@ -1,0 +1,27 @@
+.App {
+  text-align: center;
+}
+
+.babyCards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.f {
+  padding: 0.5%;
+  margin: 3px 3px;
+  border-radius: 4px;
+  background-color: rgb(235, 132, 175);
+  border-color: rgb(235, 132, 175);
+  color: rgb(172, 19, 83);
+}
+
+.m {
+  padding: 0.5%;
+  margin: 3px 3px;
+  border-radius: 4px;
+  background-color: rgb(89, 210, 226);
+  border-color: rgb(89, 210, 226);
+  color: rgb(38, 58, 145);
+}
