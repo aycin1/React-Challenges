@@ -6,10 +6,31 @@ import { useEffect } from "react";
 function App() {
   const [input, setInput] = useState("");
   const [babyNames, setBabyNames] = useState(babyNamesData);
+  const [favoritesList, setFavoritesList] = useState([]);
 
   useEffect(() => {
     refineSearch(input);
   }, [input]);
+
+  function handleClick(e) {
+    const newFavorite = e.target;
+    return setFavoritesList([newFavorite, ...favoritesList]);
+  }
+
+  function mapFavoritesList() {
+    return favoritesList.map((baby, i) => {
+      return (
+        <button
+          key={i}
+          id={baby.id}
+          name={baby.name}
+          className={colorForSex(baby.className)}
+        >
+          {baby.name}
+        </button>
+      );
+    });
+  }
 
   function mapBabyNames() {
     return Object.values(babyNames).map((baby, i) => {
@@ -19,7 +40,8 @@ function App() {
           sex={baby.sex}
           id={baby.id}
           name={baby.name}
-          className={colourForSex(baby.sex)}
+          className={colorForSex(baby.sex)}
+          onClick={(e) => handleClick(e)}
         >
           {baby.name}
         </button>
@@ -27,7 +49,7 @@ function App() {
     });
   }
 
-  function colourForSex(sex) {
+  function colorForSex(sex) {
     if (sex === "m") {
       return "m";
     } else if (sex === "f") {
@@ -62,6 +84,7 @@ function App() {
   return (
     <div className="App">
       <div className="searchBar">{searchBar()}</div>
+      <div className="favoritesList">Favorites: {mapFavoritesList()}</div>
       <div className="babyButtons">{mapBabyNames()}</div>
     </div>
   );
